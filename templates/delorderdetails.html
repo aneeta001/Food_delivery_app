@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<title>Delivery App</title>
+  	<style type="text/css">
+  		body
+    	{
+      		background: url("");
+      		background-size: cover;
+      		text-align: center;
+      		background-color: pink;
+      		display: flex;
+      		flex-wrap: wrap;
+      		justify-content: center;
+      		padding: 0px 200px;
+    	}   
+    	.submit
+    	{
+      		text-align: center;
+    	}
+    	button
+    	{
+      		padding: 5px 10px;
+      		/*border-radius: 5px;*/
+    	}
+    	table
+    	{
+    		border-collapse: collapse;
+    	}
+    	th
+    	{
+    		background-color: hotpink;
+    		color: black;
+    	}
+    	td
+    	{
+    		background-color: white;
+    		color: black;
+    	}
+    	th, td
+    	{
+    		width: 200px;
+    		text-align: center;
+    		border: 1px solid black;
+    		padding: 5px;
+    	}
+    	.row_space
+    	{
+    		border-collapse: separate;
+    		border-spacing: 0 15px;
+    	}
+  	</style>
+</head>
+<body>
+	<div class="container">
+	<table>
+		<tr>
+			<th style="padding-right: 134px;">Order ID</th>
+			<th style="padding-right: 30px;">Item name</th>
+        	<th>Delivery Address</th>
+        	<th style="padding-right: 20px;">Order status</th>
+        	<th>Delivery agent</th>
+        	<th>Location of Agent</th>
+        	<th>Delivery agent phone no</th>
+		</tr>
+	</table>
+	<table class="row_space">
+	{% for item in orderitems %}
+		<tr>
+			<td>{{item.orderid}}</td></a>
+          	<td>{{item.itemname}}</td>
+          	<td>{{item.deliveryaddress}}</td>
+          	<td>{{item.statusoforder}}</td>
+          	<td>{{item.deliveryusername}}</td>
+          	<td>{{item.locationofagent}}</td>
+          	<td>{{item.deliveryuserphoneno}}</td>
+        </tr>
+	{% endfor %}
+	</table><br><br><br>
+	<form action="/orderupdate">
+		<div class="submit"><button type="submit">Update status</button></div><br><br>
+	</form>
+	<form action="/logout" method="post">
+		<div class="submit"><button type="submit">Logout</button></div><br><br>
+	</form>
+	</div>
+</body>
+</html>
