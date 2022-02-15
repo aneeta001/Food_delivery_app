@@ -1,1 +1,1 @@
-# Food_delivery_app
+A basic implementation of a food delivery system using python, mongoDB and flask.
