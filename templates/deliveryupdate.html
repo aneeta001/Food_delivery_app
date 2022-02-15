@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Delivery App</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            body
+            {
+                background: url("");
+                background-size: cover;
+                text-align: center;
+                background-color: pink;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 200px;
+            } 
+            .container
+            {
+                height: 400px;
+                width: 400px;
+                text-align: left;
+            }
+            label
+            {
+                display: inline-block;
+                width: 200px;
+                text-align: left;
+            }
+            .submit
+            {
+                text-align: center;
+            }
+            button
+            {
+                padding: 5px 10px;
+                /*border-radius: 5px;*/
+            }
+            h1
+            {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Update order status here!!</h1>
+            <form action="/orderupdate" method="post">
+                <label>Order ID:</label><input type="text" name="orderid" value="{{request.form.orderid }}"><br><br>
+                <label>Status of order:</label>
+                <select name="statusoforder" value="{{request.form.statusoforder}}">
+                    <option value="Picked up">Picked up</option>
+                    <option value="On the way">On the way</option>
+                    <option value="Delivered">Delivered</option>
+                </select><br><br>
+                <label>Name of the agent:</label><input type="text" name="deliveryusername" required="" value="{{request.form.deliveryusername }}"><br><br>
+                <label>Location of the agent:</label><input type="text" name="locationofagent" required="" value="{{request.form.locationofagent }}"><br><br>
+                <label>Agent phone number:</label><input type="tel" pattern="[0-9]{10}" required name="deliveryuserphoneno" value="{{request.form.deliveryuserphoneno}}"><br><br>
+                <div class="submit"><button type="submit">Update status</button></div><br><br>
+            </form>
+        </div>
+        <div>
+            {% if error %}
+                <p class="error"><strong>Error:</strong> {{ error }}
+            {% endif %}
+        </div>
+    </body>
+</html>
