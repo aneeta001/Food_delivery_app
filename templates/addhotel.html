@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Delivery App</title>
+	<style type="text/css">
+		body
+    	{
+        	background: url("");
+        	background-size: cover;
+        	text-align: center;
+        	background-color: pink;
+        	display: flex;
+        	flex-wrap: wrap;
+        	justify-content: center;
+        	padding: 200px;
+    	} 
+    	.container
+    	{
+        	height: 400px;
+        	width: 400px;
+        	text-align: left;
+    	}
+    	label
+    	{
+        	display: inline-block;
+        	width: 200px;
+        	text-align: left;
+    	}
+    	.submit
+    	{
+        	text-align: center;
+    	}
+    	button
+    	{
+        	padding: 5px 10px;
+        	/*border-radius: 5px;*/
+    	}
+    	h1
+    	{
+        	text-align: center;
+    	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Add a restaurant here!!!</h1>
+		<form action="/addhotel" method="post">
+			<label>Name of the restaurant:</label>
+			<input type="text" name="hotelname" value="{{request.form.hotelname}}"><br><br>
+			<div class="submit"><button type="submit">Add restaurant</button></div><br><br>
+		</form>
+		<form action="/additems" method="post">
+			<label>Name of the food item:</label>
+			<input type="text" name="itemname" value="{{request.form.itemname}}"><br><br>
+			<div class="submit"><button type="submit">Add food item</button></div><br>
+		</form>
+		<form action="finishedit" method="post">
+			<div class="submit"><button type="submit">Finish process</button></div><br>
+		</form>
+		<form action="/logout" method="post">
+			<div class="submit"><button type="submit">Logout</button></div><br>
+		</form>
+	</div>
+</body>
+</html>
