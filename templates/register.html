@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery App</title>
+    <style type="text/css">
+      body
+      {
+        background: url("");
+        background-size: cover;
+        text-align: center;
+        background-color: pink;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 200px;
+      }
+      .container
+      {
+        height: 400px;
+        width: 350px;
+        text-align: left;
+      }
+      label
+      {
+        display: inline-block;
+        width: 140px;
+        text-align: left;
+      }
+      h1
+      {
+        text-align: center;
+      }
+      .submit
+      {
+        text-align: center;
+      }
+      button
+      {
+        padding: 5px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Register here!</h1>
+      <form action="/register" method="post">
+        <label>Username</label> <input type="text" name="username" align="center" required value="{{request.form.username}}"><br><br>
+        <label>Password</label> <input type="password" name="userpassword" min="8" required value="{{request.form.userpassword}}"><br><br>
+        <label>Email</label> <input type="email" name="usermailid" required value="{{request.form.usermailid}}"><br><br>
+        <label>User type</label>
+        <select name="userrole" value="{{request.form.userrole}}">
+          <option value="user">User</option>
+          <option value="deliveryuser">Delivery user</option>
+        </select><br><br>
+          <label>Delivery address</label> <input type="textarea" name="deliveryaddress" align="center" required value="{{request.form.deliveryaddress}}"><br><br>
+          <label>Phone number</label> <input type="tel" name="userphoneno" align="center" pattern="[0-9]{10}" required value="{{request.form.userphoneno}}"><br><br>
+        <div class="submit"><button type="submit">Register</button></div><br><br>
+      </form>
+    </div>
+    </div>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+  </body>
+</html>
