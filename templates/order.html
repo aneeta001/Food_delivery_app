@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery App</title>
+  <style type="text/css">
+    body
+    {
+        background: url("");
+        background-size: cover;
+        text-align: center;
+        background-color: pink;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 200px;
+    }   
+    .container
+    {
+        height: 400px;
+        width: 350px;
+        text-align: left;
+    }
+    label
+    {
+        display: inline-block;
+        width: 140px;
+        text-align: left;
+    }
+    .submit
+    {
+        text-align: center;
+    }
+    button
+    {
+        padding: 5px 10px;
+        /*border-radius: 5px;*/
+    }
+    h1
+    {
+        text-align: center;
+    }
+  </style>
+  <!-- <script>
+    var orderObject = {}
+    window.onload = function() {
+      var hotelSel = document.getElementById("hotel");
+      var itemSel = document.getElementById("itemname");
+      for (var x in orderObject) {
+        hotelSel.options[hotelSel.options.length] = new Option(x, x);
+      }
+      hotelSel.onchange = function() {
+        itemSel.length = 1;
+        for (var y in orderObject[this.value]) {
+          itemSel.options[itemSel.options.length] = new Option(y, y);
+        }
+      }
+    }
+</script> -->
+</head>
+<body>
+    <div class="container">
+        <h1>Order here!!!</h1><br>
+        <form action="/hotelitems" method="post">
+            <label>Choose a restaurant:</label>
+            <select name="hotel" value="{{request.form.hotel}}">
+                <option value="" disabled selected>select an option</option>
+                {% for key,value in hotelItem.items() %}
+                    <option value="{{ key }}">{{ key }}</option>
+                {% endfor %}
+            </select><br><br>
+            <div class="submit"><button type="submit">Submit</button></div><br><br>
+        </form>
+        <form action="/orderitem" method="post">
+            <label>Choose an item:</label>
+            <select name="itemname" value="{{request.form.itemname}}">
+            {% for item in menuitems %}
+                <option value="{{ item }}">{{ item }}</option>
+            {% endfor %}
+            </select><br> <br>
+            <label>New Address:</label><input type="text" placeholder="if any" name="newaddress" value="{{request.form.newaddress}}"><br><br>
+            <label>Delivery address:</label>
+            <select name="deliveryaddress" value="{{request.form.deliveryaddress}}">
+            <option value="" disabled selected>select from existing address</option>
+            {% for address in user.deliveryaddress %}
+                <option value="{{ address }}">{{ address }}</option>
+            {% endfor %}
+            </select> <br><br><br>
+            <div class="submit"><button type="submit">Order now!</button></div><br><br>
+        </form><br>
+    </div><br>
+    </div>
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{ error }}
+        {% endif %}
+    </div>
+</body>
+</html>
